@@ -30,7 +30,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'maven'
-        name = 'android-unicorn'
+        name = 'parallel-intent-service'
         desc = repoDesc
         vcsUrl = "${repoUrl}.git"
         licenses = ['Public Domain']
