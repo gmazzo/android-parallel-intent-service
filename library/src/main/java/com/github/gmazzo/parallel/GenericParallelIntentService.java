@@ -140,4 +140,8 @@ public abstract class GenericParallelIntentService<K> extends Service {
         }
     }
 
+    public Map<K, ExecutorService> getExecutors() {
+        return executors;
+    }
+
 }

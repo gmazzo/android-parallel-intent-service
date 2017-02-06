@@ -9,7 +9,7 @@ On your `build.gradle` add:
     }
 
     dependencies {
-        compile 'com.github.gmazzo:parallel-intent-service:0.1'
+        compile 'com.github.gmazzo:parallel-intent-service:0.2'
     }
 ```
 
