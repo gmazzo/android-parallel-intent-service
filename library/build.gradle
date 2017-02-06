@@ -1,0 +1,77 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 25
+        versionCode 1
+        versionName "$version"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    androidTestCompile 'com.android.support.test:rules:0.5'
+}
+
+def repoDesc = 'A multithreaded IntentService which can process requests in parallel and potentially keep multiple working queues.'
+def repoUrl = 'https://github.com/gmazzo/parallel-intent-service.git'
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'android-unicorn'
+        desc = repoDesc
+        vcsUrl = "${repoUrl}.git"
+        licenses = ['Public Domain']
+        labels = ['aar', 'android', 'unicorn']
+        publicDownloadNumbers = true
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-annotations:25.1.1'
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name repoDesc
+                url repoUrl
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += configurations.compile
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
