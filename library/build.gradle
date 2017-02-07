@@ -21,7 +21,7 @@ dependencies {
 }
 
 def repoDesc = 'A multithreaded IntentService which can process requests in parallel and potentially keep multiple working queues.'
-def repoUrl = 'https://github.com/gmazzo/parallel-intent-service.git'
+def repoUrl = 'https://github.com/gmazzo/parallel-intent-service'
 
 bintray {
     user = System.getenv('BINTRAY_USER')
@@ -33,6 +33,8 @@ bintray {
         name = 'parallel-intent-service'
         desc = repoDesc
         vcsUrl = "${repoUrl}.git"
+        githubRepo = repoUrl.replaceFirst('\\Qhttps://github.com/\\E', '');
+        githubReleaseNotesFile = 'README.md'
         licenses = ['Public Domain']
         labels = ['aar', 'android', 'unicorn']
         publicDownloadNumbers = true
