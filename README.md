@@ -39,7 +39,7 @@ public class SampleService extends MultiThreadedIntentService {
 ```
 
 ## Multiple queues sample
-In this example, we have defined two abstract queues: default (`null`) and "myQueue".
+In this example, we have defined two abstract queues: default `null` and `"myQueue"`.
 The queue comes as an extra in the `Intent`, but that's completly up to the user.
 ```java
 public class SampleService extends MultiQueuedIntentService {
