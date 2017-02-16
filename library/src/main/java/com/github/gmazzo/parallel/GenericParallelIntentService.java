@@ -130,13 +130,8 @@ public abstract class GenericParallelIntentService<K> extends Service {
     public void onDestroy() {
         super.onDestroy();
 
-        int leftTasks = 0;
         for (ExecutorService executor : executors.values()) {
-            leftTasks += executor.shutdownNow().size();
-        }
-
-        if (leftTasks > 0) {
-            throw new IllegalStateException(leftTasks + " tasks were left!");
+            executor.shutdown();
         }
     }
 
