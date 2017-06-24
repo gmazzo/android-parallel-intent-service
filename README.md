@@ -14,7 +14,7 @@ On your `build.gradle` add:
 public class SampleService extends MultiThreadedIntentService {
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleIntent(@NonNull Intent intent) {
         // TODO do something here
     }
 
@@ -31,7 +31,7 @@ public class SampleService extends MultiThreadedIntentService {
 
     @NonNull
     @Override
-    protected ExecutorService createExecutorFor(@Nullable Void queue, @Nullable Intent intent) {
+    protected ExecutorService createExecutorFor(@Nullable Void queue, @NonNull Intent intent) {
         return Executors.newFixedThreadPool(10);
     }
 
@@ -46,13 +46,13 @@ public class SampleService extends MultiQueuedIntentService {
 
     @Nullable
     @Override
-    protected final String getQueueKeyFor(@Nullable Intent intent) {
+    protected final String getQueueKeyFor(@NonNull Intent intent) {
         return intent.getStringExtra("queue");
     }
 
     @NonNull
     @Override
-    protected ExecutorService createExecutorFor(@Nullable String queue, @Nullable Intent intent) {
+    protected ExecutorService createExecutorFor(@Nullable String queue, @NonNull Intent intent) {
         if ("myQueue".equals(queue)) {
             return Executors.newFixedThreadPool(10);
         }
