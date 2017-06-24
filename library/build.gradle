@@ -21,7 +21,7 @@ dependencies {
 }
 
 def repoDesc = 'A multithreaded IntentService which can process requests in parallel and potentially keep multiple working queues.'
-def repoName = 'parallel-intent-service'
+def repoName = 'android-parallel-intent-service'
 def repoUrl = "https://github.com/gmazzo/$repoName"
 
 bintray {

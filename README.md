@@ -1,4 +1,4 @@
-# parallel-intent-service
+# android-parallel-intent-service
 A multithreaded IntentService which can process requests in parallel and potentially keep multiple working queues.
 
 ## Import
