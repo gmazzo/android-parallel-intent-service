@@ -80,6 +80,11 @@ public abstract class GenericParallelIntentService<K> extends Service {
 
     @Override
     public void onStart(final Intent intent, final int startId) {
+        if (intent == null) {
+            // just ignore null intents
+            return;
+        }
+
         K key = getQueueKeyFor(intent);
 
         ExecutorService executor = executors.get(key);

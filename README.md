@@ -5,7 +5,7 @@ A multithreaded IntentService which can process requests in parallel and potenti
 On your `build.gradle` add:
 ```
     dependencies {
-        compile 'com.github.gmazzo:parallel-intent-service:0.3'
+        compile 'com.github.gmazzo:parallel-intent-service:0.4'
     }
 ```
 
