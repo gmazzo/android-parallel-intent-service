@@ -20,6 +20,8 @@ dependencies {
     androidTestCompile 'com.android.support.test:rules:0.5'
 }
 
+archivesBaseName = 'parallel-intent-service'
+
 def repoDesc = 'A multithreaded IntentService which can process requests in parallel and potentially keep multiple working queues.'
 def repoName = 'android-parallel-intent-service'
 def repoUrl = "https://github.com/gmazzo/$repoName"
